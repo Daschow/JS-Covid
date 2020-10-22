@@ -40,7 +40,7 @@ const callAPI = (lat, lng) => {
                     }
                     const donneesCovid = dataCovid["Countries"].find(element => element["CountryCode"] == data.sys.country);
 
-                    marker.bindPopup(`Pays : ${donneesCovid["Country"]} <br>Nombre de cas : ${donneesCovid["TotalConfirmed"]}<br>Nombre de morts : ${donneesCovid["TotalDeaths"]}<br>Nombre de guéris : ${donneesCovid["TotalRecovered"]}<br> Nombre de nouveaux cas : ${donneesCovid["NewConfirmed"]}<br> Nombre de nouveaux morts : ${donneesCovid["NewDeaths"]}<br> Nombre de nouveaux guéris : ${donneesCovid["NewRecovered"]}`).openPopup();
+                    marker.bindPopup(`Pays : ${donneesCovid["Country"]} <br>Nombre de cas : ${donneesCovid["TotalConfirmed"]}<br>Nombre de morts : ${donneesCovid["TotalDeaths"]}<br>Nombre de guéris : ${donneesCovid["TotalRecovered"]}<br> Nombre de nouveaux cas : ${donneesCovid["NewConfirmed"]}<br> Nombre de nouveaux morts : ${donneesCovid["NewDeaths"]}<br> Nombre de nouveaux guéris : ${donneesCovid["NewRecovered"]} <br><a class="fav" data-lat='${lat}' data-lng='${lng}'>Ajouter au favoris</a>`).openPopup();
 
                 })
 
@@ -58,3 +58,34 @@ const useGeoLocation = () => {
 mymap.on('click', onMapClick)
 window.addEventListener('load', useGeoLocation())
 
+let markerFav = {}
+
+document.querySelectorAll(".fav").addEventListener("click", () => {
+    const lat = element.getAttribute("data-lat")
+    const lng = element.getAttribute("data-lng")
+    let compt = 0
+    markerFav[0] = [lat, lng] 
+    compt++
+})
+
+//TODO
+document.addEventListener("load", () => {
+    // GET FAVS FROM DATABASE
+    const markerArrayFromDatabase = []
+    // Then callAPI
+    markerArrayFromDatabase.forEach(element => {
+        callAPI(element[0], element[1])
+    })
+})
+
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.querySelector("#mapid").classList.add("open")
+  }
+  
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.querySelector("#mapid").classList.remove("open")
+  }
