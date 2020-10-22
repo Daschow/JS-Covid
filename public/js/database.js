@@ -12,8 +12,6 @@ const config = {
   measurementId: "G-2DP6ZZEVD3",
 };
 
-const databaseload = () => {};
-
 const addFirebaseUser = (email, password) => {
   // Get a reference to the database service
   firebase.initializeApp(config);
