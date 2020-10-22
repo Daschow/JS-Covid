@@ -35,12 +35,18 @@ const callAPI = (lat, lng) => {
             fetch('https://api.covid19api.com/summary')
                 .then(response => response.json())
                 .then(dataCovid => {
+                    if (data.sys.country == "GF" || data.sys.country == "GP" || data.sys.country == "MQ" || data.sys.country == "RE" || data.sys.country == "YT" || data.sys.country == "PM" || data.sys.country == "BL" || data.sys.country == "MF") {
+                        data.sys.country = "FR"
+                    }
                     const donneesCovid = dataCovid["Countries"].find(element => element["CountryCode"] == data.sys.country);
+
                     marker.bindPopup(`Pays : ${donneesCovid["Country"]} <br>Nombre de cas : ${donneesCovid["TotalConfirmed"]}<br>Nombre de morts : ${donneesCovid["TotalDeaths"]}<br>Nombre de guéris : ${donneesCovid["TotalRecovered"]}<br> Nombre de nouveaux cas : ${donneesCovid["NewConfirmed"]}<br> Nombre de nouveaux morts : ${donneesCovid["NewDeaths"]}<br> Nombre de nouveaux guéris : ${donneesCovid["NewRecovered"]}`).openPopup();
+
                 })
 
         })
 }
+
 
 
 const useGeoLocation = () => {
