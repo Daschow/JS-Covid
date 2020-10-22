@@ -57,3 +57,4 @@ const useGeoLocation = () => {
 
 mymap.on('click', onMapClick)
 window.addEventListener('load', useGeoLocation())
+

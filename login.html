@@ -3,10 +3,11 @@
 
 <head>
   <link rel="stylesheet" href="./css/login.css" />
-  <script src="./js/login.js"></script>
+
 </head>
 
 <body>
+
   <!-- Firebse start -->
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="/__/firebase/7.24.0/firebase-app.js"></script>
@@ -16,17 +17,26 @@
   <script src="/__/firebase/7.24.0/firebase-analytics.js"></script>
 
   <!-- Initialize Firebase -->
-  <script src="/__/firebase/init.js"></script>npm install -g firebase-tools
+  <script src="/__/firebase/init.js"></script>
   <!-- firebase stop -->
+
+
+
+
+
+
+
   <div class="signbtn">
     <!-- Buttons to open the modal -->
-    <button onclick="document.querySelector('#id02').style.display='block'">
+    <div id="add"> </div><button onclick="document.querySelector('#id02').style.display='block'">
       Sign Up
     </button>
+
     <br />
-    <button onclick="document.querySelector('#id01').style.display='block'">
+    <div id="replace"> </div><button onclick="document.querySelector('#id01').style.display='block'">
       Login
     </button>
+
   </div>
 
   <!-- The Modal (contains the Sign Up form) -->
@@ -104,3 +114,4 @@
 </body>
 
 </html>
+<script src="./js/login.js"></script>
