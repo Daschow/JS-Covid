@@ -2,25 +2,12 @@
 var modal = document.querySelector("#id01");
 var modal2 = document.querySelector("#id02");
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
-window.onclick = function (event) {
-  if (event.target == modal2) {
-    modal2.style.display = "none";
-  }
-};
-
 //
-var attempt = 3; // Variable to count number of attempts.
+let attempt = 3; // Variable to count number of attempts.
 // Below function Executes on click of login button.
 function validate() {
-  var username = document.querySelector("#username").value;
-  var password = document.querySelector("#password").value;
+  const username = document.querySelector("#username").value;
+  const password = document.querySelector("#password").value;
   if (username == "aze" && password == "aze") {
     alert("Login successfully");
     window.location = "map.html"; // Redirecting to other page.
@@ -37,3 +24,22 @@ function validate() {
     }
   }
 }
+
+const register = () => {
+  const username = document.querySelector(".emailregister").value;
+  const password = document.querySelector(".pwsregister2").value;
+  if (myScript() === true) {
+    addFirebaseUser(username, password);
+    window.location = "map.html";
+  } else {
+    alert("Votre mots de passe n'est pas identique");
+  }
+};
+
+const myScript = () => {
+  const password1 = document.querySelector(".pwsregister1").value;
+  const password2 = document.querySelector(".pwsregister2").value;
+  if (password1 === password2) {
+    return true;
+  } else false;
+};
