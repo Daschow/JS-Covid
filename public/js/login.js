@@ -23,7 +23,7 @@ function validate() {
   var password = document.querySelector("#password").value;
   if (username == "aze" && password == "aze") {
     alert("Login successfully");
-    window.location = "index.html"; // Redirecting to other page.
+    window.location = "map.html"; // Redirecting to other page.
     return false;
   } else {
     attempt--; // Decrementing by one.
