@@ -4,14 +4,14 @@ const mapboxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.or
     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
 
-	var grayscale   = L.tileLayer(mapboxUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
-		streets  = L.tileLayer(mapboxUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
+var grayscale = L.tileLayer(mapboxUrl, { id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution }),
+    streets = L.tileLayer(mapboxUrl, { id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution });
 
 const mymap = L.map('mapid', {
-		center: [50.6333, 3.0667],
-		zoom: 10,
-		layers: [grayscale]
-	});
+    center: [50.6333, 3.0667],
+    zoom: 10,
+    layers: [grayscale]
+});
 
 const baseMaps = {
     "Grayscale": grayscale,
@@ -31,8 +31,14 @@ const callAPI = (lat, lng) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=7a4bd91fb4a07bda24188bc152e8d9ea`)
         .then(response => response.json())
         .then(data => {
+            console.log(data.sys.country);
+            fetch('https://api.covid19api.com/summary')
+                .then(response => response.json())
+                .then(dataCovid => {
+                    const donneesCovid = dataCovid["Countries"].find(element => element["CountryCode"] == data.sys.country);
+                    marker.bindPopup(`Pays : ${donneesCovid["Country"]} <br>Nombre de cas : ${donneesCovid["TotalConfirmed"]}<br>Nombre de morts : ${donneesCovid["TotalDeaths"]}<br>Nombre de guéris : ${donneesCovid["TotalRecovered"]}<br> Nombre de nouveaux cas : ${donneesCovid["NewConfirmed"]}<br> Nombre de nouveaux morts : ${donneesCovid["NewDeaths"]}<br> Nombre de nouveaux guéris : ${donneesCovid["NewRecovered"]}`).openPopup();
+                })
 
-            marker.bindPopup(`Ville : ${data.name} <br>Température : ${data.main.temp}°C`).openPopup();
         })
 }
 

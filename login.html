@@ -1,146 +1,106 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="./css/login.css" />
-    <script src="./js/login.js"></script>
-  </head>
-  <body>
-    <!-- Firebse start -->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/7.24.0/firebase-app.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
+<head>
+  <link rel="stylesheet" href="./css/login.css" />
+  <script src="./js/login.js"></script>
+</head>
+
+<body>
+  <!-- Firebse start -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/7.24.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="/__/firebase/7.24.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.24.0/firebase-analytics.js"></script>
 
-    <!-- Initialize Firebase -->
-    <script src="/__/firebase/init.js"></script>npm install -g firebase-tools
-    <!-- firebase stop -->
-    <div class="signbtn">
-      <!-- Buttons to open the modal -->
-      <button onclick="document.getElementById('id02').style.display='block'">
-        Sign Up
-      </button>
-      <br />
-      <button onclick="document.getElementById('id01').style.display='block'">
-        Login
-      </button>
-    </div>
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>npm install -g firebase-tools
+  <!-- firebase stop -->
+  <div class="signbtn">
+    <!-- Buttons to open the modal -->
+    <button onclick="document.querySelector('#id02').style.display='block'">
+      Sign Up
+    </button>
+    <br />
+    <button onclick="document.querySelector('#id01').style.display='block'">
+      Login
+    </button>
+  </div>
 
-    <!-- The Modal (contains the Sign Up form) -->
-    <div id="id02" class="modal">
-      <span
-        onclick="document.getElementById('id02').style.display='none'"
-        class="close"
-        title="Close Modal"
-        >&times;</span
-      >
-      <div class="modal-content animate">
-        <div class="container">
-          <h1>Sign Up</h1>
-          <p>Please fill in this form to create an account.</p>
-          <hr />
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" required />
+  <!-- The Modal (contains the Sign Up form) -->
+  <div id="id02" class="modal">
+    <span onclick="document.querySelector('#id02').style.display='none'" class="close"
+      title="Close Modal">&times;</span>
+    <div class="modal-content animate">
+      <div class="container">
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr />
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required />
 
-          <label for="psw"><b>Password</b></label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="psw"
-            required
-          />
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required />
 
-          <label for="psw-repeat"><b>Repeat Password</b></label>
-          <input
-            type="password"
-            placeholder="Repeat Password"
-            name="psw-repeat"
-            required
-          />
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" required />
 
-          <label>
-            <input
-              type="checkbox"
-              checked="checked"
-              name="remember"
-              style="margin-bottom: 15px"
-            />
-            Remember me
-          </label>
+        <label>
+          <input type="checkbox" checked="checked" name="remember" style="margin-bottom: 15px" />
+          Remember me
+        </label>
 
-          <p>
-            By creating an account you agree to our
-            <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
-          </p>
+        <p>
+          By creating an account you agree to our
+          <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
+        </p>
 
-          <div class="clearfix">
-            <button
-              type="button"
-              onclick="document.getElementById('id02').style.display='none'"
-              class="cancelbtn"
-            >
-              Cancel
-            </button>
-            <button type="submit" class="signup">Sign Up</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- The Modal login -->
-    <div id="id01" class="modal">
-      <span
-        onclick="document.getElementById('id01').style.display='none'"
-        class="close"
-        title="Close Modal"
-        >&times;</span
-      >
-
-      <!-- Modal Content -->
-      <div class="modal-content animate">
-        <div class="imgcontainer">
-          <img src="img_avatar2.png" alt="Avatar" class="avatar" />
-        </div>
-
-        <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="uname"
-            required
-            id="username"
-          />
-
-          <label for="psw"><b>Password</b></label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="psw"
-            required
-            id="password"
-          />
-
-          //
-          <button onclick="validate()">Login</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember" /> Remember
-            me
-          </label>
-        </div>
-
-        <div class="container" style="background-color: #f1f1f1">
-          <button
-            type="button"
-            onclick="document.getElementById('id01').style.display='none'"
-            class="cancelbtn"
-          >
+        <div class="clearfix">
+          <button type="button" onclick="document.querySelector('#id02').style.display='none'" class="cancelbtn">
             Cancel
           </button>
-          <span class="psw">Forgot <a href="#">password?</a></span>
+          <button type="submit" class="signup">Sign Up</button>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+
+  <!-- The Modal login -->
+  <div id="id01" class="modal">
+    <span onclick="document.querySelector('#id01').style.display='none'" class="close"
+      title="Close Modal">&times;</span>
+
+    <!-- Modal Content -->
+    <div class="modal-content animate">
+      <div class="imgcontainer">
+        <img src="img_avatar2.png" alt="Avatar" class="avatar" />
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required id="username" />
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required id="password" />
+
+        //
+        <button onclick="validate()">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember" /> Remember
+          me
+        </label>
+      </div>
+
+      <div class="container" style="background-color: #f1f1f1">
+        <button type="button" onclick="document.querySelector('#id01').style.display='none'" class="cancelbtn">
+          Cancel
+        </button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>

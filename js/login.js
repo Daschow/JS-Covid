@@ -1,6 +1,6 @@
 // Get the modal
-var modal = document.getElementById("id01");
-var modal2 = document.getElementById("id02");
+var modal = document.querySelector("#id01");
+var modal2 = document.querySelector("#id02");
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -19,8 +19,8 @@ window.onclick = function (event) {
 var attempt = 3; // Variable to count number of attempts.
 // Below function Executes on click of login button.
 function validate() {
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
+  var username = document.querySelector("#username").value;
+  var password = document.querySelector("#password").value;
   if (username == "aze" && password == "aze") {
     alert("Login successfully");
     window.location = "index.html"; // Redirecting to other page.
@@ -30,9 +30,9 @@ function validate() {
     alert("You have left " + attempt + " attempt;");
     // Disabling fields after 3 attempts.
     if (attempt == 0) {
-      document.getElementById("username").disabled = true;
-      document.getElementById("password").disabled = true;
-      document.getElementById("submit").disabled = true;
+      document.querySelector("#username").disabled = true;
+      document.querySelector("#password").disabled = true;
+      document.querySelector("#submit").disabled = true;
       return false;
     }
   }
