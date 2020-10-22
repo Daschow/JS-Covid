@@ -24,7 +24,7 @@
         title="Close Modal"
         >&times;</span
       >
-      <form class="modal-content" action="/action_page.php">
+      <div class="modal-content animate">
         <div class="container">
           <h1>Sign Up</h1>
           <p>Please fill in this form to create an account.</p>
@@ -74,10 +74,10 @@
             <button type="submit" class="signup">Sign Up</button>
           </div>
         </div>
-      </form>
+      </div>
     </div>
 
-    <!-- The Modal -->
+    <!-- The Modal login -->
     <div id="id01" class="modal">
       <span
         onclick="document.getElementById('id01').style.display='none'"
@@ -87,7 +87,7 @@
       >
 
       <!-- Modal Content -->
-      <form class="modal-content animate" action="/action_page.php">
+      <div class="modal-content animate">
         <div class="imgcontainer">
           <img src="img_avatar2.png" alt="Avatar" class="avatar" />
         </div>
@@ -99,6 +99,7 @@
             placeholder="Enter Username"
             name="uname"
             required
+            id="username"
           />
 
           <label for="psw"><b>Password</b></label>
@@ -107,9 +108,11 @@
             placeholder="Enter Password"
             name="psw"
             required
+            id="password"
           />
 
-          <button type="submit">Login</button>
+          //
+          <button onclick="validate()">Login</button>
           <label>
             <input type="checkbox" checked="checked" name="remember" /> Remember
             me
@@ -126,7 +129,7 @@
           </button>
           <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
-      </form>
+      </div>
     </div>
   </body>
 </html>
