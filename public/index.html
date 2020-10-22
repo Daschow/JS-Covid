@@ -1,80 +1,134 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.24.0/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.24.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.24.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/7.24.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/7.24.0/firebase-storage.js"></script>
-    <script defer src="/__/firebase/7.24.0/firebase-analytics.js"></script>
-    <script defer src="/__/firebase/7.24.0/firebase-remote-config.js"></script>
-    <script defer src="/__/firebase/7.24.0/firebase-performance.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
+    <link rel="stylesheet" href="./css/login.css" />
+    <script src="./js/login.js"></script>
+    <script src="./js/database.js"></script>
   </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+
+  <body onload="databaseload()">
+    <!-- Firebse start -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+    <!-- Initialize Firebase -->
+    <!-- firebase stop -->
+    <div class="signbtn">
+      <!-- Buttons to open the modal -->
+      <button onclick="document.querySelector('#id02').style.display='block'">
+        Sign Up
+      </button>
+      <br />
+      <button onclick="document.querySelector('#id01').style.display='block'">
+        Login
+      </button>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    <!-- The Modal (contains the Sign Up form) -->
+    <div id="id02" class="modal">
+      <span
+        onclick="document.querySelector('#id02').style.display='none'"
+        class="close"
+        title="Close Modal"
+        >&times;</span
+      >
+      <div class="modal-content animate">
+        <div class="container">
+          <h1>Sign Up</h1>
+          <p>Please fill in this form to create an account.</p>
+          <hr />
+          <label for="email"><b>Email</b></label>
+          <input class="emailregister" type="text" placeholder="Enter Email" name="email" required />
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
+          <label for="psw"><b>Password</b></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            required
+            class="pwsregister1"
+          />
+
+          <label for="psw-repeat"><b>Repeat Password</b></label>
+          <input
+            type="password"
+            placeholder="Repeat Password"
+            name="psw-repeat"
+            required
+            class="pwsregister2"
+          />
+
+          <p>
+            By creating an account you agree to our
+            <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
+          </p>
+
+          <div class="clearfix">
+            <button
+              type="button"
+              onclick="document.querySelector('#id02').style.display='none'"
+              class="cancelbtn"
+            >
+              Cancel
+            </button>
+            <!-- BTN REGISTER -->
+            <button onclick="register()" class="signup">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Modal login -->
+    <div id="id01" class="modal">
+      <span
+        onclick="document.querySelector('#id01').style.display='none'"
+        class="close"
+        title="Close Modal"
+        >&times;</span
+      >
+
+      <!-- Modal Content -->
+      <div class="modal-content animate">
+        <div class="imgcontainer"></div>
+
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            name="uname"
+            required
+            id="username"
+          />
+
+          <label for="psw"><b>Password</b></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            required
+            id="password"
+          />
+
+          //
+          <button onclick="validate()">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember" /> Remember
+            me
+          </label>
+        </div>
+
+        <div class="container" style="background-color: #f1f1f1">
+          <button
+            type="button"
+            onclick="document.querySelector('#id01').style.display='none'"
+            class="cancelbtn"
+          >
+            Cancel
+          </button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
